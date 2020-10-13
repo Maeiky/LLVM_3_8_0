@@ -3,3 +3,5 @@ _old/
 *.d
 *.o
 obj/
+
+*.wdat
