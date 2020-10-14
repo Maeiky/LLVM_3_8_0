@@ -10,6 +10,7 @@
 -DD__STDC_LIMIT_MACROS
 -DD__STDC_CONSTANT_MACROS
 -DCpcDos
+-DNotComputePageSize
 >
 -{vLink_lib}=
 -lole32
@@ -42,7 +43,7 @@
 !{pLLVM_lib}EE/OProfileJIT/
 !{pLLVM_lib}EE/IntelJITEvents/
 
-!{pLLVM_lib}Support/Path.cpp
+;!{pLLVM_lib}Support/Path.cpp
 -o {pObj}llvm/lib/
 -{vIncl}
 -{vFlag}

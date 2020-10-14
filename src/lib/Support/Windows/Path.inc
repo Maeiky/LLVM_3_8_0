@@ -974,7 +974,7 @@ std::error_code UTF16ToUTF8(const wchar_t *utf16, size_t utf16_len,
    #ifndef CpcDos
   return UTF16ToCodePage(CP_UTF8, utf16, utf16_len, utf8);
   #endif
-  return 0;
+  return std::error_code();
 }
 
 std::error_code UTF16ToCurCP(const wchar_t *utf16, size_t utf16_len,
@@ -982,7 +982,7 @@ std::error_code UTF16ToCurCP(const wchar_t *utf16, size_t utf16_len,
    #ifndef CpcDos
   return UTF16ToCodePage(CP_ACP, utf16, utf16_len, utf8);
   #endif
-  return 0;
+  return std::error_code();
 }
 } // end namespace windows
 } // end namespace sys
