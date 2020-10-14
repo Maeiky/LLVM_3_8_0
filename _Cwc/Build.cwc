@@ -25,12 +25,6 @@
 -I {pLLVM}lib/ExecutionEngine/
 >
 ;Build llvm lib
-;!TableGen
-;!LTO
-;!LineEditor
-;!LibDriver
-;!Fuzzer
-;!Dbg
 ;!Tg --> only x86 subfolder + &Tg
 -c {pLLVM_lib} 
 !{pLLVM_lib}Tg/
@@ -41,6 +35,8 @@
 !{pLLVM_lib}Fuzzer/
 !{pLLVM_lib}Dbg/
 !{pLLVM_lib}Support/ThreadPool.cpp
+!{pLLVM_lib}EE/OProfileJIT/
+!{pLLVM_lib}EE/IntelJITEvents/
 -o {pObj}llvm/lib/
 -{vIncl}
 -{vFlag}
@@ -49,7 +45,7 @@
 ;-o {pObj}lib/ -#To Lib/{_sPlatform}_{_sOpt}/nouveau.{_sDynamic}
 >
 ;Generate LLVM Lib
--o {pObj}lib/ -#To {pLib}llvm.a
+;-o {pObj} -#To {pLib}llvm.a
 >
 ;Generate IrDemo.exe
 -o {pObj} -#To {pOut}/IrDemo.*
