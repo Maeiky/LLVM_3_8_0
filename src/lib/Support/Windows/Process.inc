@@ -301,6 +301,7 @@ WildcardExpand(const wchar_t *Arg, SmallVectorImpl<const char *> &Args,
   return ec;
 
   #endif
+  return std::error_code();
 }
 
 std::error_code
