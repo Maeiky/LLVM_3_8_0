@@ -24,9 +24,8 @@
 -I {pLLVM}rt/lib/builtins/
 -I {pLLVM}lib/ExecutionEngine/
 >
-;Build llvm lib
-;!Tg --> only x86 subfolder + &Tg
--c {pLLVM_lib} 
+;Build llvm libs
+-c {pLLVM_lib}
 !{pLLVM_lib}Tg/
 !{pLLVM_lib}LibDriver/
 !{pLLVM_lib}LineEditor/
@@ -40,6 +39,11 @@
 -o {pObj}llvm/lib/
 -{vIncl}
 -{vFlag}
+>
+;Build Tg --> only x86 subfolder + &Tg
+-c &{pLLVM_lib}Tg/ -o {pObj}llvm/lib/Tg/ -{vIncl} -{vFlag}
+|
+-c &{pLLVM_lib}Tg/ -o {pObj}llvm/lib/Tg/ -{vIncl} -{vFlag}
 >
 ;Generate Dynamic Lib
 ;-o {pObj}lib/ -#To Lib/{_sPlatform}_{_sOpt}/nouveau.{_sDynamic}
