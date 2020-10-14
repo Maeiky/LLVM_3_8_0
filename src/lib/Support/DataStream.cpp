@@ -21,11 +21,13 @@
 #include "llvm/Support/Program.h"
 #include <string>
 #include <system_error>
-#if !defined(_MSC_VER) && !defined(__MINGW32__)
+#if !defined(_MSC_VER) && !defined(__MINGW32__) || defined(__DJGPP__)
 #include <unistd.h>
 #else
 #include <io.h>
+#error
 #endif
+
 using namespace llvm;
 
 #define DEBUG_TYPE "Data-stream"

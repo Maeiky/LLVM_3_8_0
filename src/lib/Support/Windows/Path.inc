@@ -163,7 +163,7 @@ std::string getMainExecutable(const char *argv0, void *MainExecAddr) {
 
 #endif
 
-
+return 0;
 }
 
 UniqueID file_status::getUniqueID() const {
@@ -185,6 +185,7 @@ TimeValue file_status::getLastModificationTime() const {
   Ret.fromWin32Time(UI.QuadPart);
   return Ret;
 #endif
+return TimeValue();
 }
 
 std::error_code current_path(SmallVectorImpl<char> &result) {
@@ -209,7 +210,7 @@ std::error_code current_path(SmallVectorImpl<char> &result) {
   cur_path.set_size(len);
   return UTF16ToUTF8(cur_path.begin(), cur_path.size(), result);
  #endif
-
+return std::error_code();
 }
 
 std::error_code create_directory(const Twine &path, bool IgnoreExisting,
@@ -973,6 +974,7 @@ std::error_code UTF16ToUTF8(const wchar_t *utf16, size_t utf16_len,
    #ifndef CpcDos
   return UTF16ToCodePage(CP_UTF8, utf16, utf16_len, utf8);
   #endif
+  return 0;
 }
 
 std::error_code UTF16ToCurCP(const wchar_t *utf16, size_t utf16_len,
@@ -980,6 +982,7 @@ std::error_code UTF16ToCurCP(const wchar_t *utf16, size_t utf16_len,
    #ifndef CpcDos
   return UTF16ToCodePage(CP_ACP, utf16, utf16_len, utf8);
   #endif
+  return 0;
 }
 } // end namespace windows
 } // end namespace sys
