@@ -1,7 +1,7 @@
 -{pLLVM}=../src/
 -{pHostConfig}=../HostConfig/
 -{pLLVM_lib}={pLLVM}lib/
--{pObj}=obj/cpp_{_sPlatform}_{_sOpt}/
+-{pObj}=obj/{_sToolchain_Name}_{_sPlatform}_{_sOpt}/
 -{pLib}=Lib/{_sPlatform}_{_sOpt}/
 -{pOut}=_out/{_sPlatform}_{_sOpt}/
 >
@@ -28,6 +28,9 @@
 -I {pLLVM}lib/ExecutionEngine/
 -I ../_Demo/
 >
+;-c {pLLVM_lib}Support/DataStream.cpp -o {pObj}llvm/lib/DataStream.o
+;-{vIncl} -{vFlag} -U__STRICT_ANSI__
+>
 ;Build llvm libs
 -c {pLLVM_lib}
 !{pLLVM_lib}Tg/
@@ -44,11 +47,11 @@
 !{pLLVM_lib}EE/OProfileJIT/
 !{pLLVM_lib}EE/IntelJITEvents/
 !{pLLVM_lib}Object/COFFYAML.cpp
-
 ;!{pLLVM_lib}Support/Path.cpp
 -o {pObj}llvm/lib/
 -{vIncl}
 -{vFlag}
+;
 >
 ;Build Tg --> only x86 subfolder + &Tg
 -c &{pLLVM_lib}Tg/ -o {pObj}llvm/lib/Tg/ -{vIncl} -{vFlag}
@@ -59,7 +62,7 @@
 ;-o {pObj}lib/ -#To Lib/{_sPlatform}_{_sOpt}/nouveau.{_sDynamic}
 >
 ;Generate LLVM Lib
-;-o {pObj} -#To {pLib}llvm.a
+-o {pObj} -#To {pLib}llvm_{_sToolchain_Name}.a
 >
 ;Generate IrDemo.exe
 -o {pObj} -#To {pOut}/IrDemo.*
