@@ -11,6 +11,7 @@
 -DD__STDC_CONSTANT_MACROS
 -DCpcDos
 -DNotComputePageSize
+-fpermissive
 >
 -{vLink_lib}=
 -lole32
@@ -42,6 +43,7 @@
 !{pLLVM_lib}Tf/Ins/PGOInstrumentation.cpp
 !{pLLVM_lib}EE/OProfileJIT/
 !{pLLVM_lib}EE/IntelJITEvents/
+!{pLLVM_lib}Object/COFFYAML.cpp
 
 ;!{pLLVM_lib}Support/Path.cpp
 -o {pObj}llvm/lib/
@@ -61,7 +63,7 @@
 >
 ;Generate IrDemo.exe
 -o {pObj} -#To {pOut}/IrDemo.*
--{vLink_lib}
+;-{vLink_lib}
 >
 
 -#Run
